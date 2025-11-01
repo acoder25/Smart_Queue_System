@@ -1,0 +1,93 @@
+:root {
+  --black: #0b0b0b;
+  --white: #ffffff;
+  --muted: #6c6c6c;
+  --card-shadow: rgba(11, 11, 11, 0.12);
+}
+
+/* Global */
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  background: var(--white);
+  color: var(--black);
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+/* HERO */
+.hero {
+  background: var(--black);
+  color: var(--white);
+  padding: 5rem 1rem;
+  text-align: center;
+}
+.hero-inner { max-width: 980px; margin: 0 auto; }
+.hero-title { font-size: clamp(2rem, 4vw, 4rem); margin: 0 0 0.6rem; font-weight:700; }
+.hero-sub { font-size: 1.125rem; color: rgba(255,255,255,0.85); margin: 0 0 1.8rem; line-height:1.6; max-width:820px; margin-left:auto; margin-right:auto; }
+
+/* Buttons */
+.hero-cta { display:flex; gap:1rem; justify-content:center; align-items:center; margin-top:1rem; }
+.btn { padding:0.7rem 1.4rem; border-radius:12px; font-weight:600; cursor:pointer; border:0; transition: transform .18s ease, box-shadow .18s ease; box-shadow:0 4px 18px rgba(0,0,0,0.15); }
+.btn-primary { background:var(--white); color:var(--black); }
+.btn-primary:hover { transform: translateY(-3px); box-shadow:0 10px 30px rgba(0,0,0,0.22); }
+.btn-outline { background:transparent; color:var(--white); border:2px solid rgba(255,255,255,0.65); box-shadow:none; }
+.btn-outline:hover { transform: translateY(-3px); border-color: rgba(255,255,255,0.95); }
+
+/* FEATURES - stacked vertical column */
+.features-section { padding: 4rem 1rem; background: var(--white); color: var(--black); }
+.section-heading { text-align:center; font-size:2rem; color:var(--black); margin:0 0 2rem; font-weight:700; }
+
+/* make features one below another, centered and constrained width */
+.features-column {
+  max-width: 780px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  padding: 0 0.5rem;
+}
+
+/* card style */
+.card.feature {
+  background: linear-gradient(180deg, #ffffff, #fbfbfb);
+  border-radius: 12px;
+  padding: 1.4rem;
+  box-shadow: 0 14px 30px var(--card-shadow);
+  border: 1px solid #f3f3f3;
+  opacity: 0;
+  transform-origin: center;
+}
+
+/* text */
+.card.feature h3 { margin:0 0 0.5rem; font-size:1.125rem; }
+.card.feature p { margin:0; color:var(--muted); line-height:1.6; }
+
+/* Animation base - elements start off-screen left/right and invisible */
+.card.feature {
+  will-change: transform, opacity, filter;
+  transition: transform 450ms cubic-bezier(.2,.9,.2,1), opacity 450ms ease, filter 450ms ease;
+}
+
+/* initial positions for left/right variants (no visible class) */
+.slide-left { transform: translateX(-36px) rotateZ(-0.8deg); filter: blur(6px); opacity: 0; }
+.slide-right { transform: translateX(36px) rotateZ(0.8deg); filter: blur(6px); opacity: 0; }
+
+/* when intersection observer adds 'visible', animate to neutral state with optional delay */
+.card.feature.visible {
+  transform: translateX(0) rotateZ(0);
+  opacity: 1;
+  filter: blur(0);
+  transition-delay: var(--delay, 0s);
+}
+
+/* Add a subtle upward pop for visible state to emphasize entrance */
+.card.feature.visible { transform: translateY(-4px) translateX(0) rotateZ(0); }
+
+/* small responsiveness */
+@media (max-width: 700px) {
+  .hero { padding: 3rem 1rem; }
+  .hero-sub { font-size: 1rem; }
+  .hero-cta { flex-direction: column; gap: .6rem; }
+  .card.feature { padding: 1rem; border-radius: 10px; }
+}
