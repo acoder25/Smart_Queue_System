@@ -1,0 +1,168 @@
+/* GLOBAL BOX-SIZING */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* PAGE BACKGROUND */
+.register-page {
+  background: #f6f7f9;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  padding: 2rem;
+}
+
+/* MAIN CARD */
+.register-box {
+  background: #0f0f10;
+  color: #fff;
+  border-radius: 22px;
+  box-shadow:
+    0 20px 50px rgba(2, 6, 23, 0.45),
+    0 3px 12px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255,255,255,0.02);
+  padding: 2.4rem 2.2rem;
+  width: 650px;
+  max-width: 60vw;
+  min-height: 380px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* TITLE */
+.register-title {
+  font-size: 2.1rem;
+  font-weight: 800;
+  margin-bottom: 1.6rem;
+  text-align: center;
+  letter-spacing: 0.4px;
+  color: #fff;
+}
+
+/* FORM */
+.register-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.05rem;
+}
+
+/* ROW STRUCTURE */
+.form-group {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1.1rem;
+}
+
+/* LABELS → Now bolder + aligned */
+.form-group label {
+  flex: 0 0 28%;        /* consistent vertical alignment */
+  min-width: 130px;     /* keeps labels stable */
+  font-weight: 600;     /* bolder labels */
+  font-size: 1.05rem;
+  color: #e6e6e6;
+  text-align: right;
+  padding-right: 0.8rem;
+}
+
+/* INPUTS + SELECT */
+.form-group input,
+.form-group select {
+  flex: 1 1 auto;
+  padding: 0.62rem 0.85rem;
+  border-radius: 10px;
+  border: none;
+  background: #ffffff;
+  color: #0f0f10;
+  font-size: 1rem;
+  box-shadow: 0 6px 18px rgba(3,8,18,0.12);
+  transition: box-shadow 0.18s ease, transform 0.06s;
+  outline: none;
+}
+
+/* FOCUS EFFECT */
+.form-group input:focus,
+.form-group select:focus {
+  box-shadow: 0 0 0 4px rgba(169,195,245,0.14), 0 6px 18px rgba(3,8,18,0.12);
+}
+
+/* PLACEHOLDER COLOR */
+.form-group input::placeholder {
+  color: #9b9b9b;
+}
+
+/* BUTTON */
+.register-btn {
+  width: 40%;
+  min-width: 160px;
+  margin: 1.3rem auto 0 auto;
+  background: #ffffff;
+  color: #0f0f10;
+  border: none;
+  border-radius: 12px;
+  padding: 0.78rem 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 8px 28px rgba(3,8,18,0.18);
+  transition: background 0.18s ease, color 0.18s ease, transform 0.06s;
+}
+
+/* BUTTON HOVER */
+.register-btn:hover {
+  background: #5d82e6;
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+/* BUTTON PRESS */
+.register-btn:active {
+  transform: translateY(0);
+}
+
+/* RESPONSIVE BREAKPOINT */
+@media (max-width: 880px) {
+  .register-box {
+    padding: 1.1rem 1rem;
+  }
+
+  .form-group {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.4rem;
+  }
+
+  .form-group label {
+    flex: 0 0 auto;
+    text-align: left;
+    padding-right: 0;
+    margin-bottom: 0.2rem;
+  }
+
+  .register-btn {
+    width: 100%;
+    min-width: unset;
+  }
+}
+
+/* VERY SMALL DEVICES */
+@media (max-width: 420px) {
+  .register-title {
+    font-size: 1.6rem;
+  }
+  .register-box {
+    border-radius: 16px;
+  }
+  .form-group input,
+  .form-group select {
+    font-size: 0.95rem;
+    padding: 0.6rem 0.75rem;
+  }
+}
