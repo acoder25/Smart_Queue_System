@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import "./Register.css";
 
-function Register() {
+export default function Register() {
   const [form, setForm] = useState({
     name: '',
     phone: '',
@@ -48,7 +49,8 @@ function Register() {
        if(!res.ok){
            throw new Error(data.message || 'Registration failed');
        }
-       alert('Registered successfully!Now you can login');
+       alert('Registered successfully!');
+       navigate('./login');
       
        setForm({ name: '', phone: '', password: '', system: 'Hospital Queue Predictor System' });
     } 
@@ -128,4 +130,4 @@ function Register() {
   );
 }
 
-export default Register;
+

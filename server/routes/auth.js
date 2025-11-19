@@ -3,6 +3,7 @@ const router=express.Router();
 const {body, validationResult}=require('express-validator');
 const bcrypt = require('bcryptjs');
 const User = require('../models/User'); // Mongoose model
+const jwt=require('jsonwebtoken');
 
 router.post('/register',
     [
@@ -61,7 +62,9 @@ router.post('/login',
          if (!isMatch) {
             return res.status(401).json({ message: 'Invalid phone or password' });
          }
-         return res.status(200).json({ message: 'Login successful' });
+         const payload={id: user._id,name:user.name,phone:user.phone};
+         const token=jwt.sign(payload,process.env.JWT_SECRET,{expiresIn:'1d'})
+         return res.status(200).json({ message: 'Login successful',token,user:payload });
 
       }
       catch(err){

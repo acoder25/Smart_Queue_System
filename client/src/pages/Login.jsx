@@ -1,7 +1,9 @@
 import react,{useState} from 'react';
+import {useNavigate} from 'react-router-dom';
 import "./Login.css";
 
-function Login() {
+
+export default function Login() {
   const [form, setForm] = useState({
     phone: '',
     password: '',
@@ -9,6 +11,7 @@ function Login() {
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const navigate=useNavigate();
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -40,7 +43,10 @@ function Login() {
       if(!res.ok){
         throw new Error(data.message||'Login Failed');
       }
+      localStorage.setItem('token',data.token);
+      localStorage.setItem('user',JSON.stringify(data.user));
       alert('login successful!');
+      navigate('/Booking');
     }
     catch(err){
       setError(err.message||"Something went wrong");
@@ -113,5 +119,3 @@ function Login() {
   );
 
 }
-
-export default Login;

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./Home1.css";
 
 
-export default function Home() {
+export default function Home1() {
   const featuresRef = useRef(null);
 
   useEffect(() => {
