@@ -2,7 +2,7 @@ const express=require("express");
 const router=express.Router();
 const {body, validationResult}=require('express-validator');
 const bcrypt = require('bcryptjs');
-const User = require('../models/User'); // Mongoose model
+const User = require('../models/User');  // Mongoose model
 const jwt=require('jsonwebtoken');
 
 router.post('/register',

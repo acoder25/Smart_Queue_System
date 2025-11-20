@@ -7,6 +7,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Booking from './pages/Booking.jsx';
 import New_booking from './pages/New_booking.jsx';
+import SchApp from './pages/schApp';
 
 
 createRoot(document.getElementById('root')).render(
@@ -17,6 +18,7 @@ createRoot(document.getElementById('root')).render(
       <Route path="/register" element={<Register />} />
       <Route path="/Booking" element={<Booking />}/>
       <Route path="/New_booking" element={<New_booking />}/>
+      <Route path="/schApp" element={<SchApp />}/>
     </Routes>
   </BrowserRouter>
 );

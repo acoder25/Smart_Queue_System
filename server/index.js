@@ -5,6 +5,8 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const { connectToDb,getDb}=require('./config/db')
 const auth= require('./routes/auth');
+const predictionRoutes=require("./routes/predictionRoutes");
+const book=require("./routes/bookings");
 
 //config
 
@@ -38,6 +40,9 @@ app.get("/",(req,res)=>{
 
 });
 app.use('/api/auth', auth);
+
+app.use('/api/predict',predictionRoutes);
+app.use('/api/bookings',book);
 
 
 

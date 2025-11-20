@@ -1,69 +1,190 @@
+/* =======================
+   FORM: department + date + button
+   ======================= */
+
 .booking-form {
-  width: 80vw;
-  max-width: 1200px;
-  margin: 0 auto;
+  width: 80%;                    
+  max-width: 1100px;
+  margin: 2.5rem auto 0;          /* auto = center horizontally */
+  
   display: flex;
   flex-direction: row;
-  gap: 2.5rem;
-  align-items: flex-end;
-  justify-content: center;
-  margin-top: 2.5rem;
+  align-items: center;            /* vertical alignment */
+  justify-content: center;        /* CENTER everything */
+  gap: 2rem;                      /* spacing between items */
+}
+.slot-card--nonrush:hover {
+  background: #1c7a3c;
+  transform: translateY(-2px);
+  transition: 0.15s ease;
 }
 
 .booking-form-group {
-  flex: 1;
-  min-width: 160px;
-  max-width: 220px;
   display: flex;
   flex-direction: column;
+  width: 280px;               /* bigger input areas */
 }
 
 .booking-form-group label {
   font-weight: 500;
   display: block;
-  margin-bottom: 8px;
-  font-size: 1.1rem;
+  margin-bottom: 6px;
+  font-size: 1.05rem;
 }
 
 .booking-input {
   width: 100%;
-  padding: 0.4rem 0.5rem;
+  padding: 0.85rem 1.2rem;      /* bigger inputs */
   border-radius: 8px;
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   border: 1px solid #bbb;
   background: #222;
   color: #fff;
-  margin-bottom: 0;
 }
 
+/* smaller blue button */
 .view-schedule-btn {
-  background: #a9c3f5;
+  background: #2563eb;          /* blue */
   color: #fff;
   border: none;
-  border-radius: 8px;
-  padding: 0.7rem 1.6rem;
-  font-size: 1.08rem;
+  border-radius: 6px;
+  padding: 0.8rem 0.9rem;       /* smaller than inputs */
+  font-size: 0.95rem;
   font-weight: 600;
-  margin-left: 1.5rem;
+  margin-top: 2rem;
+  margin-left:2rem;
   cursor: pointer;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
-  transition: background 0.2s, color 0.2s;
-  align-self: flex-end;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: background 0.2s, transform 0.1s;
 }
+
 .view-schedule-btn:hover {
-  background: #3a5a8c;
+  background: #1d4ed8;
+  transform: translateY(-1px);
 }
 
 @media (max-width: 900px) {
   .booking-form {
     flex-direction: column;
+    align-items: stretch;
     width: 98vw;
     gap: 1.5rem;
-    align-items: stretch;
   }
+
   .view-schedule-btn {
-    margin-left: 0;
     width: 100%;
     align-self: stretch;
+  }
+}
+
+/* =======================
+   SLOTS HEATMAP (your existing styles)
+   ======================= */
+
+.slots-loading {
+  margin-top: 1.5rem;
+  text-align: center;
+  color: #ddd;
+  font-size: 0.95rem;
+}
+
+.slots-section {
+  width: 80vw;
+  max-width: 1200px;
+  margin: 2.5rem auto 0;
+}
+
+.slots-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.slots-header h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.slots-legend {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.legend-box {
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.legend-box--nonrush {
+  background: #22c55e;
+}
+
+.legend-box--rush {
+  background: #ef4444;
+}
+
+.slots-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 0.75rem;
+}
+
+.slot-card {
+  padding: 0.75rem 0.9rem;
+  border-radius: 10px;
+  background: #111;
+  color: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.slot-card--nonrush {
+  background: #14532d; /* dark green */
+  border-color: #22c55e33;
+}
+
+.slot-card--rush {
+  background: #7f1d1d; /* dark red */
+  border-color: #ef444433;
+}
+
+.slot-time {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.slot-queue {
+  font-size: 0.86rem;
+  opacity: 0.9;
+}
+
+.slot-status {
+  margin-top: 0.2rem;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  opacity: 0.88;
+}
+
+.slots-empty {
+  margin-top: 1.5rem;
+  text-align: center;
+  color: #ccc;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 900px) {
+  .slots-section {
+    width: 96vw;
   }
 }
