@@ -2,8 +2,10 @@ import React from "react";
 import PageLayout from "./PageLayout";
 import "./Booking.css";
 import "./PageLayout.css";
+import { useNavigate } from "react-router-dom";
 
 function Booking() {
+  const navigate=useNavigate();
   return (
     <PageLayout
       title="Book an Appointment"
@@ -13,7 +15,7 @@ function Booking() {
         <div className="pg-card booking-card" tabIndex={0}>
           <h2>New Appointment</h2>
           <p>Book a new appointment by selecting department and date.</p>
-          <button className="pg-btn" onClick={() => {/* Open booking form */}}>
+          <button className="pg-btn" onClick={() => {navigate('/New_booking')}}>
             Book Now
           </button>
         </div>
